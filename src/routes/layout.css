@@ -1,1 +1,55 @@
 @import 'tailwindcss';
+
+footer {
+	@apply w-full pt-1 flex items-start justify-center text-sm text-gray-600;
+}
+
+.content {
+	@apply h-full p-3 bg-gray-100 rounded-lg;
+}
+
+.brand {
+	@apply text-4xl font-bold tracking-wide text-teal-700;
+}
+
+.sidebar-title {
+	@apply px-4 py-2 text-lg font-bold;
+}
+
+.sidebar-item {
+	@apply px-4 py-2 hover:bg-gray-300 rounded-lg hover:border-l-6 border-teal-700;
+}
+
+.btn-primary {
+	@apply w-full bg-teal-700 text-white p-2 rounded hover:bg-teal-900 text-lg
+}
+.btn-secondary {
+	@apply w-full bg-indigo-700 text-white p-2 rounded hover:bg-indigo-900 text-lg
+}
+.btn-danger {
+	@apply w-full bg-rose-500 text-white p-2 rounded hover:bg-rose-700 text-lg
+}
+.btn-warning {
+	@apply w-full bg-amber-500 text-white p-2 rounded hover:bg-amber-700 text-lg
+}
+
+.error-message {
+	@apply pl-2 text-red-600 text-sm;
+}
+
+.flash-container {
+	@apply absolute top-0 left-0 right-0 py-4 px-8 h-40 z-50 flex items-center justify-center;
+}
+
+.flash-success {
+	@apply px-12 pt-4 pb-6 bg-teal-700 text-white rounded-lg
+}
+.flash-error {
+	@apply px-12 pt-4 pb-6 bg-pink-600 text-white rounded-lg
+}
+.flash-info {
+	@apply px-12 pt-4 pb-6 bg-blue-700 text-white rounded-lg
+}
+.flash-warning {
+	@apply px-12 pt-4 pb-6 bg-amber-600 text-white rounded-lg
+}
