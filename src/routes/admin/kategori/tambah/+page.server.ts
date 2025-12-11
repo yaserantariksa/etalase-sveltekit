@@ -2,7 +2,7 @@ import { setFlash } from '$lib/flash/flash';
 import { db } from '$lib/server/db';
 import { categories, type NewCategory } from '$lib/server/db/schema';
 import { validateTitleName } from '$lib/server/validation';
-import { sluggify } from '$lib/utils/utils';
+import { slugify } from '$lib/utils/utils';
 import type { Actions } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 
@@ -10,7 +10,7 @@ export const actions: Actions = {
 	default: async (event) => {
 		const formData = await event.request.formData();
 		const name = formData.get('name') as string;
-		const slug = sluggify(name);
+		const slug = slugify(name);
 
 		const validationResult = validateTitleName(name);
 
