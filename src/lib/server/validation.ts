@@ -1,14 +1,8 @@
 import { db } from './db';
 
-let success = true;
-const validation = {
-	username: [] as string[],
-	password: [] as string[]
-};
-
 /**
  * Validates user registration input
- * 
+ *
  * @async
  * @function validateRegister
  * @param {string} username
@@ -16,6 +10,11 @@ const validation = {
  * @returns {Promise<{ success: boolean; validation: { username: string[]; password: string[] } }>} Validation result
  */
 export async function validateRegister(username: string, password: string) {
+	let success = true;
+	const validation = {
+		username: [] as string[],
+		password: [] as string[]
+	};
 	const usernameRegex = /^(?=.{5,20}$)[a-z](?:[a-z]|[_.](?=[a-z]))*$/;
 
 	// form validation: check if fields are empty
@@ -54,6 +53,33 @@ export async function validateRegister(username: string, password: string) {
 		}
 	}
 
+	return {
+		success,
+		validation
+	};
+}
+
+export function validateTitleName(text: string) {
+	let success = true;
+	const validation: {
+		name: string[];
+	} = {
+		name: []
+	};
+
+	if (!text || text.trim().length === 0) {
+		success = false;
+		validation.name.push('Nama kategori harus diisi.');
+	}
+	const titleRegex = /^[A-Za-z][A-Za-z0-9]*(?: [A-Za-z0-9]+)*$/;
+	if (!titleRegex.test(text)) {
+		success = false;
+		validation.name.push('Harus diawali oleh huruf besar atau huruf kecil');
+		validation.name.push('Huruf berikutnya boleh huruf besar atau huruf kecil');
+		validation.name.push('Boleh terdapat angka setelah huruf atau sepasi');
+		validation.name.push('Hanya boleh ada spasi tunggal');
+		validation.name.push('Tidak boleh ada karakter simbol dan/ atau tanda baca');
+	}
 	return {
 		success,
 		validation

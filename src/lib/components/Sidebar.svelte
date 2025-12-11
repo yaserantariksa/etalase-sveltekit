@@ -1,5 +1,5 @@
 <script lang="ts">
-	let {user} = $props()
+	let { user } = $props();
 	const menuItems = [
 		{
 			href: '/admin/',
@@ -20,18 +20,20 @@
 	];
 	const settingItems = [
 		{
-			href: '/admin/umum',
-			label: 'Umum'
+			href: '/admin/users',
+			label: 'User'
 		},
 		{
-			href: '/admin/user',
-			label: 'User'
+			href: '/admin/umum',
+			label: 'Pengaturan Umum'
 		}
 	];
 </script>
 
 <div class="p-3 h-full rounded-lg bg-gray-100">
-	<div class="sidebar-title">{user.username}</div>
+	{#if user}
+		<div class="pt-2 pb-4 text-center text-2xl">Hi, {user.username}</div>
+	{/if}
 	<div class="sidebar-title">MENU</div>
 	<div class="flex flex-col px-4 mb-2">
 		{#each menuItems as item}

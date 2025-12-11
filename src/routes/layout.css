@@ -13,7 +13,7 @@ footer {
 }
 
 .sidebar-title {
-	@apply px-4 py-2 text-lg font-bold;
+	@apply px-4 pt-2 text-lg font-bold;
 }
 
 .sidebar-item {
@@ -21,16 +21,16 @@ footer {
 }
 
 .btn-primary {
-	@apply w-full bg-teal-700 text-white p-2 rounded hover:bg-teal-900 text-lg
+	@apply w-full px-4 py-2 bg-teal-700 text-white rounded hover:bg-teal-900 text-lg;
 }
 .btn-secondary {
-	@apply w-full bg-indigo-700 text-white p-2 rounded hover:bg-indigo-900 text-lg
+	@apply w-full px-4 py-2 bg-indigo-400 text-white rounded hover:bg-indigo-500 text-lg;
 }
 .btn-danger {
-	@apply w-full bg-rose-500 text-white p-2 rounded hover:bg-rose-700 text-lg
+	@apply w-full  px-4 py-2 bg-rose-400 text-white rounded hover:bg-rose-500 text-lg;
 }
 .btn-warning {
-	@apply w-full bg-amber-500 text-white p-2 rounded hover:bg-amber-700 text-lg
+	@apply w-full  px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-700 text-lg;
 }
 
 .error-message {
@@ -45,11 +45,35 @@ footer {
 	@apply px-12 pt-4 pb-6 bg-teal-700 text-white rounded-lg
 }
 .flash-error {
-	@apply px-12 pt-4 pb-6 bg-pink-600 text-white rounded-lg
+	@apply px-12 pt-4 pb-6 bg-pink-600 text-white rounded-lg;
 }
 .flash-info {
-	@apply px-12 pt-4 pb-6 bg-blue-700 text-white rounded-lg
+	@apply px-12 pt-4 pb-6 bg-blue-700 text-white rounded-lg;
 }
 .flash-warning {
-	@apply px-12 pt-4 pb-6 bg-amber-600 text-white rounded-lg
+	@apply px-12 pt-4 pb-6 bg-amber-600 text-white rounded-lg;
+}
+
+.title-page {
+	@apply text-3xl font-bold tracking-wide mb-4;
+}
+
+.pagination-item {
+	@apply inline-flex w-10 h-10 items-center justify-center border border-gray-400;
+}
+
+.selected-page {
+	@apply relative z-10 inline-flex items-center bg-indigo-400 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500;
+}
+
+.unselected-page {
+	@apply relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-600 inset-ring inset-ring-gray-600 hover:bg-black/5 focus:z-20 focus:outline-offset-0;
+}
+
+.previous-page {
+	@apply relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-600 inset-ring inset-ring-gray-600 hover:bg-black/5 focus:z-20 focus:outline-offset-0;
+}
+
+.next-page {
+	@apply relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-600 inset-ring inset-ring-gray-600 hover:bg-black/5 focus:z-20 focus:outline-offset-0;
 }

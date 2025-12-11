@@ -1,6 +1,9 @@
 <script lang="ts">
-	import { setFlash } from '$lib/flash/flash.js';
 	import { onMount } from 'svelte';
+	import HeadComponent from "$lib/components/HeadComponent.svelte";
+
+	const title = "Etalase - Home"
+
 	let { data } = $props();
 
 	let message = $state('Loading...');
@@ -12,7 +15,10 @@
 			}, 2000);
 		});
 	});
+
 </script>
+
+<HeadComponent title={title}/>
 
 <div class="content">
 	<h1>{message}</h1>

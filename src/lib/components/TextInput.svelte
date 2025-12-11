@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { name, label, type = 'text', errors, value = $bindable() } = $props();
+	let { name, label, type = 'text', errors = [], value = $bindable(), isReadonly = false } = $props();
 </script>
 
 <div>
@@ -8,8 +8,9 @@
 		{type}
 		id={name}
 		{name}
-		class="w-full p-2 mb-2 border border-gray-300 rounded focus:outline-teal-700"
+		class={`w-full p-2 mb-2 border border-gray-300 rounded focus:outline-teal-700 ${isReadonly ? 'bg-gray-200 text-gray-600' : ''}`}
 		bind:value
+		readonly={isReadonly}
 	/>
 	{#if errors}
 		{#each errors as errorMessage}

@@ -22,6 +22,27 @@
       "when": 1764657009646,
       "tag": "0002_great_spirit",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765181900575,
+      "tag": "0003_worthless_dark_beast",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1765257071400,
+      "tag": "0004_mighty_alex_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1765264048063,
+      "tag": "0005_freezing_thunderbird",
+      "breakpoints": true
     }
   ]
 }

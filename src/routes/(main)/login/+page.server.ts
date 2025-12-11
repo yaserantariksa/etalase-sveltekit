@@ -2,7 +2,7 @@ import { validateRegister } from '$lib/server/validation';
 import { hash, verify } from '@node-rs/argon2';
 import { type Actions } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
-import { sessions, users } from '$lib/server/db/schema';
+import { sessions, users, type NewUser, type User } from '$lib/server/db/schema';
 import {
 	createSession,
 	generateSessionToken,
@@ -20,6 +20,16 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 
 		const [user] = await db.select().from(users).where(eq(users.username, username));
+		if (!user) {
+			return {
+				success: false,
+				data: { username },
+				validation: {
+					username: ['Username dan/ atau Password salah'],
+					password: ['Username dan/ atau Password salah']
+				}
+			};
+		}
 
 		const [existingSession] = await db.select().from(sessions).where(eq(sessions.userId, user.id));
 
@@ -29,12 +39,13 @@ export const actions: Actions = {
 
 		const passwordIsVerified = await verify(user.passwordHash, password);
 
-		if (!user || !passwordIsVerified) {
+		if (!passwordIsVerified) {
 			return {
 				success: false,
+				data: { username },
 				validation: {
 					username: ['Username dan/ atau Password salah'],
-					password: ['']
+					password: ['Username dan/ atau Password salah']
 				}
 			};
 		}
@@ -43,7 +54,7 @@ export const actions: Actions = {
 		const session = await createSession(sessionToken, user.id);
 		setSessionTokenCookie(event, sessionToken, session.expiresAt);
 
-		setFlash(event, 'success', 'Berhasil login.', '/admin')
+		setFlash(event, 'success', 'Berhasil login.', '/admin');
 	},
 	register: async (event) => {
 		const formData = await event.request.formData();
@@ -55,7 +66,7 @@ export const actions: Actions = {
 		if (validationResult.success) {
 			const passwordHash = await hash(password);
 			const userId = generateUserId();
-			const user = {
+			const user: NewUser = {
 				id: userId,
 				username,
 				passwordHash
@@ -71,6 +82,7 @@ export const actions: Actions = {
 
 		return {
 			success: validationResult.success,
+			data: { username },
 			validation: validationResult.validation
 		};
 	}
